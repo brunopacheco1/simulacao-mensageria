@@ -1,0 +1,20 @@
+<messaging-deployment xmlns="urn:jboss:messaging-activemq-deployment:1.0">
+	<server>
+		<jms-destinations>
+			<jms-queue name="mensageriaInclusaoQueue">
+				<entry name="queue/mensageria/inclusao" />
+				<entry name="java:jboss/queue/mensageria/inclusao" />
+			</jms-queue>
+
+			<jms-queue name="mensageriaAtualizacaoQueue">
+				<entry name="queue/mensageria/atualizacao" />
+				<entry name="java:jboss/queue/mensageria/atualizacao" />
+			</jms-queue>
+			
+			<jms-queue name="mensageriaRemocaoQueue">
+				<entry name="queue/mensageria/remocao" />
+				<entry name="java:jboss/queue/mensageria/remocao" />
+			</jms-queue>
+		</jms-destinations>
+	</server>
+</messaging-deployment>
