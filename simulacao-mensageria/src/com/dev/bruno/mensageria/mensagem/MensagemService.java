@@ -2,6 +2,7 @@ package com.dev.bruno.mensageria.mensagem;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Logger;
 
 import javax.ejb.Singleton;
@@ -55,6 +56,12 @@ public class MensagemService {
 	public MensagemDTO add(MensagemDTO dto) throws Exception {
 		validate(null, dto);
 		
+		Long timeToSleep = ThreadLocalRandom.current().nextLong(1000, 60000);
+		
+		System.out.println("Processando " + timeToSleep + " ms");
+		
+		Thread.sleep(timeToSleep);
+		
 		Mensagem entity = dtoToEntity(null, null, dto);
 		
 		mensagemDAO.add(entity);
@@ -64,6 +71,12 @@ public class MensagemService {
 	
 	public MensagemDTO update(Long id, MensagemDTO dto) throws Exception {
 		validate(id, dto);
+		
+		Long timeToSleep = ThreadLocalRandom.current().nextLong(1000, 60000);
+		
+		System.out.println("Processando " + timeToSleep + " ms");
+		
+		Thread.sleep(timeToSleep);
 		
 		Mensagem entity = mensagemDAO.get(id);
 				
@@ -76,6 +89,13 @@ public class MensagemService {
 	
 	public void remove(Long id) throws Exception {
 		Mensagem entity = mensagemDAO.get(id);
+		
+		Long timeToSleep = ThreadLocalRandom.current().nextLong(1000, 60000);
+		
+		System.out.println("Processando " + timeToSleep + " ms");
+		
+		Thread.sleep(timeToSleep);
+		
 		mensagemDAO.remove(entity);
 	}
 	

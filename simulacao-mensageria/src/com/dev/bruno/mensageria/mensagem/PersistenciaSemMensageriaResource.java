@@ -1,7 +1,5 @@
 package com.dev.bruno.mensageria.mensagem;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -28,12 +26,6 @@ public class PersistenciaSemMensageriaResource {
 	public GenericResponse add(MensagemDTO dto) throws Exception {
 		mensagemService.add(dto);
 		
-		Long timeToSleep = ThreadLocalRandom.current().nextLong(1000, 60000);
-		
-		System.out.println("Processando " + timeToSleep + " ms");
-		
-		Thread.sleep(timeToSleep);
-		
 		return new GenericResponse(true);
 	}
 	
@@ -43,12 +35,6 @@ public class PersistenciaSemMensageriaResource {
 	public GenericResponse update(@PathParam("id") Long id, MensagemDTO dto) throws Exception {
 		mensagemService.update(id, dto);
 		
-		Long timeToSleep = ThreadLocalRandom.current().nextLong(1000, 60000);
-		
-		System.out.println("Processando " + timeToSleep + " ms");
-		
-		Thread.sleep(timeToSleep);
-		
 		return new GenericResponse(true);
 	}
 	
@@ -57,16 +43,6 @@ public class PersistenciaSemMensageriaResource {
 	public GenericResponse remove(@PathParam("id") Long id) throws Exception {
 		mensagemService.remove(id);
 		
-		Long timeToSleep = ThreadLocalRandom.current().nextLong(1000, 60000);
-		
-		System.out.println("Processando " + timeToSleep + " ms");
-		
-		Thread.sleep(timeToSleep);
-		
 		return new GenericResponse(true);
-	}
-	
-	public Long count(String queryStr) {
-		return mensagemService.count(queryStr);
 	}
 }

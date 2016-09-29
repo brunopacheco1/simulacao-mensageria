@@ -2,7 +2,6 @@ package com.dev.bruno.mensageria.mensagem;
 
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
 import javax.jms.JMSContext;
@@ -21,9 +20,6 @@ import com.dev.bruno.mensageria.app.GenericResponse;
 @Path("persistencia-com-mensageria")
 @Produces(MediaType.APPLICATION_JSON)
 public class PersistenciaComMensageriaResource {
-	
-	@Inject
-	private MensagemService mensagemService;
 
 	@Resource(lookup = "java:/JmsXA")
 	private ConnectionFactory connectionFactory;
@@ -68,9 +64,5 @@ public class PersistenciaComMensageriaResource {
 		}
 
 		return new GenericResponse(true, "Incluído na fila");
-	}
-
-	public Long count(String queryStr) {
-		return mensagemService.count(queryStr);
 	}
 }
